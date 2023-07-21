@@ -1,0 +1,388 @@
+Lec.6
+=======
+files are stored in buckets.
+
+S3 Max
+account - bucket - object - put operation
+100 buckets per account.
+5 tbb per object.
+5 gb per put.
+
+s3 bucket has a universal namespace, that is, 
+names must be uniquely globally.
+
+Features
+===========
+Durability and availability
+Tiered Storage Available
+Lifecycle Management
+Versioning
+
+Secure your data using Access control lists and bucket
+policies.
+
+Lec.7
+=========
+Create bucket and upload
+
+Module-2
+==========
+Key Learnings:
+
+    Describe the benefits of Amazon EC2 at a basic level.
+    Identify the different Amazon EC2 instance types.
+    Differentiate between the various billing options for Amazon EC2.
+    Summarize the benefits of Amazon EC2 Auto Scaling.
+    Summarize the benefits of Elastic Load Balancing.
+    Give an example of the uses for Elastic Load Balancing.
+    Summarize the differences between Amazon Simple Notification Service (Amazon SNS) and Amazon Simple Queue Service (Amazon SQS).
+    Summarize additional AWS compute options.
+
+EC2
+======
+In this video, we are going to talk at a high level about a service called Amazon Elastic Compute Cloud or EC2. If you remember from our coffee shop, the employees are a metaphor for the client/server model where a client sends a request to the server; the server does some work, and then sends a response. That example is for the coffee shop. But the same idea applies to other businesses. Your business, whether it be in healthcare, manufacturing, insurance, or delivering video content to millions of users all around the world, are also using this model to deliver products, resources, or data to your end users. And you're going to need servers to power your business and your applications. You need raw compute capacity to host your applications and provide the compute power that your business needs. When you're working with AWS, those servers are virtual. And the service you use to gain access to virtual servers is called EC2. 
+
+
+Using EC2 for compute is highly flexible, cost effective, and quick when you compare it to running your own servers on premises in a data center that you own. The time and money it takes to get up and running with on-premises resources is fairly high. When you own your own fleet of physical servers, you first have to do a bunch of research to see what type of servers you want to buy and how many you'll need. Then you purchase that hardware up front. You'll wait for multiple weeks or months for a vendor to deliver those servers to you. You then take them to a data center that you own or rent to install them, rack and stack them, and wire them all up. Then you make sure that they are secure and powered up and then they're ready to be used. Only then can you begin to host your applications on top of these servers. The worst part is, once you buy these servers you are stuck with them whether you use them or not. 
+
+
+With EC2, it's much easier to get started. AWS took care of the hard part for you already. AWS already built and secured the data centers. AWS has already bought the servers, racked and stacked them, and they are already online ready to be used. AWS is constantly operating a massive amount of compute capacity. And you can use whatever portion of that capacity when you need it. All you have to do is request the EC2 instances you want and they will launch and boot up, ready to be used within a few minutes. Once you're done, you can easily stop or terminate the EC2 instances. You're not locked in or stuck with servers that you don't need or want. Your usage of EC2 instances can vary greatly over time. And you only pay for what you use. Because with EC2, you only pay for running instances, not stopped or terminated instances. 
+
+
+EC2 runs on top of physical host machines managed by AWS using virtualization technology. When you spin up an EC2 instance, you aren't necessarily taking an entire host to yourself. Instead, you are sharing the host with multiple other instances, otherwise known as virtual machines. And a hypervisor running on the host machine is responsible for sharing the underlying physical resources between the virtual machines. This idea of sharing underlying hardware is called multitenancy. The hypervisor is responsible for coordinating this multitenancy and it is managed by AWS. The hypervisor is responsible for isolating the virtual machines from each other as they share resources from the host. This means EC2 instances are secure. Even though they may be sharing resources, one EC2 instance is not aware of any other EC2 instances also on that host. They are secure and separate from each other. 
+
+
+Luckily, this is not something you, yourself, need to set up. But it's important to know the idea of multitenancy and have a high level understanding of how this works. EC2 gives you a great deal of flexibility and control. Not only can you spin up new servers or take them offline at will, but you also have the flexibility and control over the configuration of those instances. 
+
+
+When you provision an EC2 instance, you can choose the operating system based on either Windows or Linux. You can provision thousands of EC2 instances on demand. With a blend of operating systems and configurations to power your business' different applications. 
+
+
+Beyond the OS, you also configure what software you want running on the instance. Whether it's your own internal business applications, simple web apps, or complex web apps, databases or third party software like enterprise software packages, you have complete control over what happens on that instance. EC2 instances are also resizable. You might start with a small instance, realize the application you are running is starting to max out that server, and then you can give that instance more memory and more CPU. Which is what we call vertically scaling an instance. 
+
+
+In essence, you can make instances bigger or smaller whenever you need to. You also control the networking aspect of EC2. So what type of requests make it to your server and if they are publicly or privately accessible is something you decide. 
+
+
+We will touch more on this later in the course in detail. Virtual machines are not a new thing. But the ease of provisioning EC2 instances allows for programmers and businesses to innovate more quickly. AWS has just made it much, much easier and more cost effective for you to acquire servers through this Compute as a Service model. There's a lot more to learn about EC2. We talked about virtualization and the types of software you can run on an EC2 instance. But there is more you can configure with EC2 as well.
+
+Launch. Connect. Use. working of EC2 Instance.
+
+EC2 Instance Types: 
+
+General Purpose
+-------------------
+balanced resources
+Diverse workloads
+
+Compute Optimized
+---------------------
+Compute Intensive tasks
+Gaming Servers
+HPC
+Scientific Modeling
+
+Accelarated Computing
+-----------------------
+FLoating num cal
+Graphics Processing
+Data pattern matching
+Utiize hardware accelarators
+
+Storage Optimized
+------------------
+High performance for locally stored data
+
+Amazon EC2 Scaling
+--------------------
+Two approaches: dynamic scaling, predictive scaling.
+
+> Dynamic scaling responds to changing demand.
+> predictive scaling automatically schedules the right 
+number of amazon EC2 instances based on predictive demand.
+
+> The third configuration that you can set in an Auto Scaling group is the maximum capacity.
+
+Directing traffic with Elastic Load Balancing
+-----------------------------------------------
+> Load Balancing, directs work divided in equal distribution.
+> ELB, -regional construct, external traficking, Elastic Load Balancing is the AWS service that automatically distributes incoming application traffic across multiple resources, such as Amazon EC2 instances. 
+
+Monolithic applications and microservices
+--------------------------------------------
+Suppose that you have an application with tightly coupled components. 
+These components might include databases, servers, the user interface, business logic, and so on. 
+This type of architecture can be considered a monolithic application. 
+
+Messaging and Queuing
+-------------------------
+
+Compute Services
+-------------------
+An AWS service for serverless computing is AWS Lambda.
+
+> AWS Lambda is a service that lets you run code without needing to provision or manage servers. 
+> While using AWS Lambda, you pay only for the compute time that you consume.
+
+Working:
+>You upload your code to Lambda. 
+>You set your code to trigger from an event source, such as AWS services, mobile applications, or HTTP endpoints.
+>Lambda runs your code only when triggered.
+>You pay only for the compute time that you use. In the previous example of resizing images, 
+you would pay only for the compute time that you use when uploading new images. 
+Uploading the images triggers Lambda to run code for the image resizing function.
+
+Amazon Elastic Container Service (Amazon ECS)
+-----------------------------------------------
+Amazon Elastic Container Service (Amazon ECS) is a highly scalable, high-performance container management system that enables you to run and scale containerize
+> Amazon ECS supports Docker containers. Docker is a software platform that enables you to build, test, and deploy applications quickly.
+> Amazon Elastic Kubernetes Service (Amazon EKS) is a fully managed service that you can use to run Kubernetes on AWS. 
+> AWS Fargate is a serverless compute engine for containers. It works with both Amazon ECS and Amazon EKS. 
+
+Module-3
+-----------
+
+AWS Global Infrastructure
+Key business factors; compliance, proximity, feature availability, pricing.
+
+In AWS, everything is an API(Application Programming Interface).
+AWS CLI allows us to write commands to launch EC2 instance.
+
+AWS Elastic Beanstalk
+
+With AWS Elastic Beanstalk, you provide code and configuration settings, and Elastic Beanstalk deploys the resources necessary to perform the following tasks: 
+    Adjust capacity
+    Load balancing
+    Automatic scaling
+    Application health monitoring
+
+AWS Fargate is a serverless compute engine for containers.
+
+Module-4
+----------
+Networking
+===========
+Amazon Route 53 Latency
+
+Module-5
+--------------
+    Summarize the basic concept of storage and databases.
+    Describe the benefits of Amazon Elastic Block Store (Amazon EBS).
+    Describe the benefits of Amazon Simple Storage Service (Amazon S3).
+    Describe the benefits of Amazon Elastic File System (Amazon EFS).
+    Summarize various storage solutions.
+    Describe the benefits of Amazon Relational Database Service (Amazon RDS).
+    Describe the benefits of Amazon DynamoDB.
+    Summarize various database services.
+
+Amazon - S3
+-------------
+
+Max object size is 5TB.
+Can create multiple buckets.
+Static web hostilng - collection of HTML files.
+Amazon S3 Glacier - archive data.
+Vault lock policy - lock your vault.
+
+a service that provides object-level storage. Amazon S3 stores data as objects in buckets.
+
+You can upload any type of file to Amazon S3, such as images, videos, text files, and so on. For example, you might use Amazon S3 to store backup files, media files for a website, or archived documents. 
+
+Amazon S3 - Web enabled. Offers cost savings. Serverless. Regionally Distributed.
+
+Amazon EFS
+-----------
+Amazon Elastic File System (Amazon EFS) is a scalable file system used with AWS Cloud services and on-premises resources. 
+As you add and remove files, Amazon EFS grows and shrinks automatically. 
+It can scale on demand to petabytes without disrupting applications.
+
+Amazon EBS
+------------
+Elastic block storage, easy to use , scalable, high-performance,
+block storage service designed for Amazon Elastic Compute Cloud Services.
+
+Amazon Relational Database Service(RDS)
+---------------------------------------------
+Amazon aurora. RDS. Here we learned about the dbms, type of dbms it supports including:
+Aurora, PostgreSQL, SQl etc.
+
+Now we will learn about - Amazon DynamoDB
+			--------------------
+Non relational NoSQL Database. Highly Scalable.
+Milisecond Response Time. Fully Managed. Purpose Built.
+
+> A serverless key-value database service.
+
+Amazon Redshift
+------------------
+> Amazon Redshift is a data warehousing service that you can use for big data analytics. 
+> It offers the ability to collect data from many sources and helps you to understand 
+relationships and trends across your data.
+
+Data Migration Service
+-----------------------
+> AWS Database Migration Service (AWS DMS) enables you to migrate relational databases, nonrelational databases, 
+and other types of data stores.
+
+> Amazon Neptune.
+> Amazon Quantum Ledger Database 
+> Amazon Managed Blockchain
+> Amazon ElastiCache
+> Amazon DynamoDB Accelarator
+
+MCQ Gyaan
+------------
+    AWS Outposts is a service that enables you to run infrastructure in a hybrid cloud approach.
+    Amazon CloudFront is a content delivery service. 
+    AWS Snowball is a device that enables you to transfer large amounts of data into and out of AWS.
+
+Cloud Acquisition
+-------------------
+Cloud Adoption Parts - Procuremnt, Legal, Security, Governance, Finance and Compliance.
+
+Key aspects of procurement - Pricing, Security, Governance, T&C.
+
+Security - Tools & Encryption. Audit. TheCLOUD Act.
+
+Data Sovereignty and Data Residency: Data sovereignty means ownership over data. Data residency is the requirement that all content processed and stored in an IT system remain within a specific country’s borders. Both data sovereignty and data residency have become a major topic for many customers.
+
+Summary By Sudhanshu Ranjan
+------------------------------
+The course started with cloud acquisition fundamentals, under which it covered 
+topcis such as process of procurment of cloud models, cloud adoption parts,
+Course moved with Procurement Foundations, in whicb it covered Rethinking procurement,
+Educating interanl stakeholders on buying cloud, separating infrastructure from services and labor.
+and ended with a summary.
+
+Moving ahead we learned about key aspects of procurement, working with partners, making it real, 
+and ended with summary of the course.
+------------------------------------------------------------------------------------------------------------------------
+
+AWS Well Architected Framework
+-----------------------------------------
+Purpose: Make Informed Decisions. Think cloud natively. Understand potential impact.
+
+
+AWS Exam Prep
+-----------------
+AWS Snowmobile can most efficiently emport exabytes of data to AWS cloud from an on-premises
+environment.
+
+Module 1: Cloud Concepts
+
+Define the AWS Cloud and its value proposition
+
+           Define the benefits of the AWS Cloud
+           Explain how the AWS Cloud allows users to focus on business value
+           Question walkthrough
+
+Identify aspects of AWS Cloud economics
+
+           Define items that would be part of a Total Cost of Ownership (TCO) proposal
+           Identify which operations will reduce costs by moving to the cloud
+           Question walkthrough
+
+Explain the different cloud architecture design principles
+
+           Explain the design principles
+           Question walkthrough
+
+Module 2: Security and Compliance
+
+Define the AWS shared responsibility model
+
+           Recognize the elements of the shared responsibility model
+           Describe the customer’s responsibility on AWS
+           Describe AWS responsibilities
+           Question walkthrough
+
+Define AWS Cloud security and compliance concepts
+
+           Identify where to find AWS compliance information
+           At a high level, describe how customers achieve compliance on AWS
+           Describe who enables encryption on AWS for a given service
+           Recognize there are services that will aid in auditing and reporting
+           Explain the concept of least privileged access
+           Question walkthrough
+
+Identify AWS access management capabilities
+
+           Understand the purpose of User and Identity Management
+           Question walkthrough
+
+Identify resources for security support
+
+           Recognize there are different network security capabilities
+           Recognize there is documentation and where to find it (for example, best practices, whitepapers, official documents)
+           Know that security checks are a component of AWS Trusted Advisor
+           Question walkthrough
+
+Module 3: Technology
+
+Define methods of deploying and operating in the AWS Cloud
+
+           At a high level, identify different ways of provisioning and operating in the AWS Cloud
+           Identify different types of cloud deployment models
+           Identify connectivity options
+           Question walkthrough
+
+Define the AWS global infrastructure
+
+           Describe the relationships among Regions, Availability Zones, and Edge Locations
+           Describe how to achieve high availability through the use of multiple Availability Zones
+           Describe when to consider the use of multiple AWS Regions
+           Describe the benefits of Edge Locations at a high level
+           Question walkthrough
+
+Identify the core AWS services
+
+           Describe the categories of services on AWS (compute, storage, network, database)
+           Identify AWS compute services
+           Identify different AWS storage services
+           Identify AWS networking services
+           Identify different AWS database services
+           Question walkthrough
+
+Identify resources for technology support
+
+           Recognize there is documentation (best practices, whitepapers, AWS Knowledge Center, forums, blogs)
+           Identify the various levels and scope of AWS Support
+           Recognize there is the AWS Partner Network (APN) and the AWS Marketplace, including independent software vendors and system integrators
+           Identify sources of AWS technical assistance and knowledge including professional services, solutions architects, training and certification, and the APN
+           Identify the benefits of using AWS Trusted Advisor
+           Question walkthrough
+
+Module 4: Billing and Pricing
+
+Compare and contrast the various pricing models for AWS (for example, On-Demand Instances, Reserved Instances, and Spot Instance pricing)
+
+           Identify scenarios or the best fit for On-Demand Instance pricing
+           Identify scenarios or the best fit for Reserved Instance pricing
+           Identify scenarios or the best fit for Spot Instance pricing
+           Question walkthrough
+
+Recognize the various account structures in relation to AWS billing and pricing
+
+           Recognize that consolidated billing is a feature of AWS Organizations
+           Identify how multiple accounts aid in allocating costs across departments
+           Question walkthrough
+
+Identify resources available for billing support
+
+           Identify ways to get billing support and information
+           Identify where to find pricing information on AWS services
+           Recognize that alarms and alerts exist
+           Identify how tags are used in cost allocation
+
+Question walkthrough
+
+Summary: This Exam Guide basically provided the pre-requisites needed to clear the Cloud Practitioner Essentials
+Exam. 
+
+Failure Management: Automate. Analyze. Backup Data. Recover.
+
+AWS Well Architected Tool: Demo.
+
+
+
+
